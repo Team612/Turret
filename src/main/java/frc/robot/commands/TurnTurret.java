@@ -14,7 +14,7 @@ public class TurnTurret extends CommandBase {
   public TurnTurret(Drivetrain drivetrain, double speed) {
     m_drivetrain = drivetrain;
     m_speed = speed;
-    addRequirements(drivetrain);
+    addRequirements(drivetrain); //bruh
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
