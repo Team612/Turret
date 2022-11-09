@@ -17,12 +17,18 @@ public class Drivetrain extends SubsystemBase {
   public Drivetrain() {
       spark_1 = new CANSparkMax(0, MotorType.kBrushless);
   }
-  public void sparkLeft() {
+  /*public void sparkLeft() {
     spark_1.set(-0.05);
   }
   public void sparkRight() {
     spark_1.set(0.05);
   }  
+  public void StopTurn() {
+    spark_1.set(0);
+  }*/
+  public void turn(double speed){
+    spark_1.set(speed);
+  }
 
   @Override
   public void periodic() {
