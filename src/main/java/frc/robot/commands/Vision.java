@@ -87,8 +87,7 @@ public class Vision extends CommandBase {
         rotationSpeed = 0;
         // forwardSpeed = 0;
       }
-    m_drive.sparkLeft();
-    //m_drive.arcadeDrive(forwardSpeed, rotationSpeed);
+    m_drive.turn(rotationSpeed);
   }
 
   // Called once the command ends or is interrupted.

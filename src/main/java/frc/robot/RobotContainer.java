@@ -6,11 +6,10 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
-import frc.robot.commands.TurnLeft;
-import frc.robot.commands.TurnRight;
+import frc.robot.commands.TurnTurret;
+import frc.robot.commands.Vision;
 import frc.robot.controls.ControlMap;
 import frc.robot.subsystems.Drivetrain;
-import frc.robot.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 
 /**
@@ -39,9 +38,9 @@ public class RobotContainer {
   }
 
   private void turretButtonBindings() {
-    ControlMap.GUNNER_A.whenPressed(new TurnLeft(m_drivetrain));
-    ControlMap.GUNNER_B.whenPressed(new TurnRight(m_drivetrain));
-
+    ControlMap.GUNNER_A.whenPressed(new TurnTurret(m_drivetrain, -0.05));
+    ControlMap.GUNNER_B.whenPressed(new TurnTurret(m_drivetrain, 0.05));
+    ControlMap.GUNNER_X.whenPressed(new TurnTurret(m_drivetrain, 0));
   }
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
@@ -50,6 +49,6 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
-    return new TurnLeft(m_drivetrain);
+    return new Vision(m_drivetrain);
   }
 }
