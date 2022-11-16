@@ -60,7 +60,7 @@ public class Vision extends CommandBase {
   public Vision(Drivetrain drivetrain) {
     // Use addRequirements() here to declare subsystem dependencies.
     m_drive = drivetrain;
-    addRequirements(drivetrain);
+    addRequirements(drivetrain); //remove reliance on drive subsys
   }
 
   // Called when the command is initially scheduled.
@@ -73,7 +73,7 @@ public class Vision extends CommandBase {
     var result = camera.getLatestResult();
     System.out.println(camera.getLatestResult().getBestTarget().getYaw());
       //System.out.println(result.hasTargets());
-      if(result.hasTargets()){
+      if(result.hasTargets()){ //later, try updating this to run continuously so the drivers dont have to manually edit it
         rotationSpeed = -rotationController.calculate(result.getBestTarget().getYaw(), 0);
         System.out.println(rotationSpeed);
 
@@ -92,11 +92,15 @@ public class Vision extends CommandBase {
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+    m_drive.turn(0);
+  }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    boolean stop = camera.getLatestResult().getBestTarget().getYaw() <= 0.05 && camera.getLatestResult().getBestTarget().getYaw() > -0.05;
+    System.out.println(stop);
+    return stop;
   }
 }

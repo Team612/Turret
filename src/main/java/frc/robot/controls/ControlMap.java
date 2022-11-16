@@ -14,5 +14,6 @@ public class ControlMap {
   public static JoystickButton GUNNER_A = new JoystickButton(gunner, 1); //A
   public static JoystickButton GUNNER_B = new JoystickButton(gunner, 2); //B
   public static JoystickButton GUNNER_X = new JoystickButton(gunner, 3); //X
+  public static JoystickButton GUNNER_Y = new JoystickButton(gunner, 4); //Y
   // Called when the command is initially scheduled.
 }

@@ -37,6 +37,8 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
+    m_chooser.addOption("vision align", new Vision(m_drivetrain));
+    SmartDashboard.putData(m_chooser);
     turretButtonBindings();
   }
 
@@ -44,6 +46,7 @@ public class RobotContainer {
     ControlMap.GUNNER_A.whenPressed(new TurnTurret(m_drivetrain, -0.05));
     ControlMap.GUNNER_B.whenPressed(new TurnTurret(m_drivetrain, 0.05));
     ControlMap.GUNNER_X.whenPressed(new TurnTurret(m_drivetrain, 0));
+    ControlMap.GUNNER_Y.whenPressed(new Vision(m_drivetrain));
   }
 
   /**
