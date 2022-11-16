@@ -13,7 +13,7 @@ public class Drivetrain extends SubsystemBase {
   /** Creates a new Drivetrain. */
   private final CANSparkMax spark_1;
   public Drivetrain() {
-      spark_1 = new CANSparkMax(0, MotorType.kBrushless);
+      spark_1 = new CANSparkMax(1, MotorType.kBrushless);
   }
   public void turn(double speed) {
     spark_1.set(speed);
